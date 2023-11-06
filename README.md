@@ -14,3 +14,4 @@ Tools
 11.	SQL Injection / nslookup/sqlmap/nikto
 12.	Android Debugging Bridge (adb)
 # PRACTICAL TIME
+https://github.com/CyberHackPr/CEH_PRACTICAL/pulls Click Here for Notes
