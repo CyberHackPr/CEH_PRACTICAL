@@ -13,4 +13,3 @@ Tools
 10.	Snow steganography/OpenStego/Covert TCP
 11.	SQL Injection / nslookup/sqlmap/nikto
 12.	Android Debugging Bridge (adb)
-
