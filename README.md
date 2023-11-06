@@ -106,7 +106,7 @@ o	tcp.flags.syn
 o	Follow streams red part is our request and the blue part is the server response
 o	To see if there is a txt file – export object got to file, export object of http and save it 
 (DOS, DDOS)
-5.**	Steganography**
+5. **Steganography**
 •	SNOW – for hiding and extracting hidden data from a text file
 o	Open SNOW.EXE (NB. you have to write in uppercase)–C (compile) –m “this is the secret message” –p ‘’give the password any’’ Secret.txt (this is the secrete file) Hiddensecret.txt (is the file you want to be the output)
 o	To extract the hidden file-: SNOW.EXE –C -p “given password any” Hiddensecret.txt and then hit enter.
@@ -122,7 +122,7 @@ o	Then ~/Downloads/Covert_tcp $ ls there will be 3 files covert_tcp, covert_tcp.
 o	Enter a command: cc –a covert_tcp covert_tcp.c 
 o	  ./covert_tcp  –source [IP Addrr e.g. 192.168.1.1] ( source Ip)  –dest [IP Addrr] (destination IP) –source_port 9999 ( set any port) –dest_port 8888 –file secret.txt  -: this is done from source computer
 o	./covert_tcp  –source [IP Addrr: 192.168.1.1] ( source Ip)  -source_port 8888 –server –file receive.txt (received file as)
-**6.	Cryptography – practice of securing information so that it’s only accessible to authorised users only. The goal is to protect sensitive information**
+   6.	**Cryptography – practice of securing information so that it’s only accessible to authorised users only. The goal is to protect sensitive information**
 •	HashMyfiles - calculating and comparing hashes of files
 o	Open the tool 
 o	Drag and drop the files to the HashMyfiles application
