@@ -138,6 +138,9 @@ FTP Bruteforce with Hydra
 hydra -L /root/Desktop/Wordlists/Usernames.txt -P
 /root/Desktop/Wordlists/Passwords.txt ftp://10.10.10.11
 
+SSH bruteforce 
+nmap [ipaddress] -p 22 --script ssh-brute --script-args userdb=username.txt,pasdb=password.txt (this is to bruteforce ssh)
+
 **Module 14: Hacking Web Applications**
 Wordpress
 wpscan --url http://10.10.10.12:8080 --enumerate u
