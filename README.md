@@ -51,15 +51,15 @@ Perform deep scan on the elf files and obtain the last 4 digits of SHA 384 hash 
 •	After selecting file.elf with highest entropy, we need to calculate hash of SHA 384: sha384sum file.elf and consider only the last 4 digits of the hash result.
 
 SMB Connection
-smbclient -L <TARGET_IP> -N
-smbclient -L <TARGET_IP> -U <USER>
-smbclient //<TARGET_IP>/<USER> -U <USER>
-smbclient //<TARGET_IP>/admin -U admin
-smbclient //<TARGET_IP>/public -N #NULL Session
+.smbclient -L <TARGET_IP> -N
+.smbclient -L <TARGET_IP> -U <USER>
+.smbclient //<TARGET_IP>/<USER> -U <USER>
+.smbclient //<TARGET_IP>/admin -U admin
+.smbclient //<TARGET_IP>/public -N #NULL Session
 ## SMBCLIENT
-smbclient //<TARGET_IP>/share_name
-help
-ls
-get <filename>
+.smbclient //<TARGET_IP>/share_name
+.help
+.ls
+.get <filename>
 
 
