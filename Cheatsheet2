@@ -86,7 +86,7 @@ and the Wi-Fi traffic capture named “WirelessCapture.cap” is located in the 
 19.	A disgruntled ex-employee has hidden a server access code in a Windows machine in the 192.168.0.0/24 subnet.
 You cannot physically access the target machine but you know that the organization administration purpose. 
 Your task is to retrieve the “sa_code.txt” file from the target machine and enter the string in the file as the answer. 
-Suggest you RDP a windows machine in this subnet and search for the file
+Suggest you RDP a windows machine in this subnet and search for the file check for IP with RDP port open 3389
 
 20.	A disgruntled employee of your target organization has stolen the company’s trade secrets and encrypted them using VeraCrypt.
 The VeraCrypt volume file “Secret” is stored on the C: drive of the “EH Workstation – 2” machine.
