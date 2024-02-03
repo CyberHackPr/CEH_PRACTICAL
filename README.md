@@ -71,6 +71,15 @@ Perform deep scan on the elf files and obtain the last 4 digits of SHA 384 hash 
 7.	We've three elf files, now we need to calculate entropy for each of them using this command: ent file.elf
 8.	After selecting file.elf with highest entropy, we need to calculate hash of SHA 384: sha384sum file.elf and consider only the last 4 digits of the hash result.
 
+Vertical Privilege escalation 
+1. ssh smith@Ip –p 1337
+2. sudo -L to check on users
+3. cd /root then ls to see the .txt file, try to cat the file but permission is denied
+4. then find the .ssh file 
+5. then you cat id_rsa file key. Copy the key from beginning to end then nano id_rsa and paste the key
+6. chmod 600 id_rsa  this give it root privileges 
+7. as you are logged ,ssh root@ipaddrr –p 1336 –I id_rsa then you will have performed a vertical privilege escalation 
+
 SMB Connection
 1. smbclient -L <TARGET_IP> -N
 2. smbclient -L <TARGET_IP> -U <USER>
