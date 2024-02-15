@@ -92,4 +92,4 @@ SMB Connection
 3. ls
 4. get <filename>
 
-
+smbmap -u <USER> -p '<PW>' -H <TARGET_IP> --download 'C$\flag.txt'
