@@ -16,6 +16,8 @@ Tools
 # PRACTICAL TIME
 https://github.com/dhabaleshwar/CEHPractical/blob/main/Everything%20You%20Need.md
 https://github.com/CyberHackPr/CEH_PRACTICAL/pulls Click Here for Notes
+
+
 **xfreerdp /u:[username] /p:[password] /v:[ip_address]** 
 Exam RoadMap
 1,2,8,11,12,16,17,18,20,7 (10 marks)  10,19,4,5,15,14,13,6,3,9  
